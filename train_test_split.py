@@ -10,6 +10,13 @@ RANDOM_STATE = 2023
 
 
 def split(dataset_path: str, val_size: Union[float, int] = 500) -> None:
+    """
+    Splits dataset into train/val and test split
+
+    :param dataset_path: Path to dataset, obtained by create_annotation script
+    :param val_size: Fraction if float or num samples to be in val split, defaults to 500
+    :return: Dict with splits as keys and saved paths
+    """
     datadir = Path(dataset_path).parent
     data = open_json(dataset_path)
     test = [d for d in data if d["split"] == "test"]

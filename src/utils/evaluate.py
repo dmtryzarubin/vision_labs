@@ -17,6 +17,15 @@ def evaluate(
     save_path_prefix: str = "",
     thresholds: List[float] = [0.08, 1.0],
 ) -> None:
+    """
+    Plots Cumulative error distribution plots for model and dlib
+
+    :param dlib_predictions_path: Path to `.json` with dlib predictions
+    :param model_predictions_path: Path to `.json` with model predictions
+    :param save_path_prefix: Prefix where to save plots, defaults to "".
+                             Plots will be saved to ./save_path_prefix/plots/CED.png
+    :param thresholds: Thresholds for auc calculation, defaults to [0.08, 1.0]
+    """
     model_preds = pd.DataFrame(open_json(model_predictions_path))
     dlib_preds = pd.DataFrame(open_json(dlib_predictions_path))
     merged = pd.merge(model_preds, dlib_preds, how="inner", on=config.join_on)

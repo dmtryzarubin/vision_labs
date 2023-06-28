@@ -19,6 +19,16 @@ def plot_ced(
     step: float = 0.01,
     fig_kwargs: Dict[str, Any] = {},
 ) -> None:
+    """
+    PLots Cumulative Error Distribution for a given list of errors
+
+    :param errors: List of arrays with errors
+    :param labels: List of labels for each array in errors
+    :param dataset_name: Dataset name, defaults to ""
+    :param threshold: Threshold to calculate AUC on, defaults to 0.08
+    :param step: Step of integration for AUC, defaults to 0.01
+    :param fig_kwargs: Matplotlib figure kwargs, defaults to {}
+    """
     assert len(labels) == len(errors)
     plt.figure(**fig_kwargs)
     s = ""

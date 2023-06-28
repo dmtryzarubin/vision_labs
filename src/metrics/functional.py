@@ -15,6 +15,14 @@ def normalized_mse(
     target: Union[Float[np.ndarray, "68 2"], Int[np.ndarray, "68 2"]],
     d: float,
 ) -> float:
+    """
+    Calculates normalized rmse between outputs and targets
+
+    :param output: Face landmarks predicted by model 
+    :param target: Target face landmarks
+    :param d: Normalization factor
+    :return: NMSE value for sample 
+    """
     # 68x2 -> 68x2
     mse = (output - target) ** 2
     # 68x2 -> 68
@@ -27,6 +35,11 @@ def normalized_mse(
 def calc_proportions(
     errors: Float[np.ndarray, "batch"]
 ) -> Tuple[Float[np.ndarray, "batch"], Float[np.ndarray, "batch"]]:
+    """
+    Calculates x and y values for empirical cumulative distribution plot
+
+    :return: Tuple with x and y values
+    """
     errors = np.sort(errors)
     n = len(errors)
     values = np.zeros_like(errors)
@@ -42,6 +55,14 @@ def calc_proportions(
 def calc_auc(
     errors: Float[np.ndarray, "batch"], threshold: float = 0.08, step: float = 0.001
 ) -> float:
+    """
+    Calculates auc for given sorted array of errors
+
+    :param errors: Array with errors on dataset
+    :param threshold: Threshold, too calc error up to, defaults to 0.08
+    :param step: Step value for integration, defaults to 0.001
+    :return: Float with AUC
+    """
     n = len(errors)
     auc = 0.0
     for thr in np.arange(0.0, threshold, step):
