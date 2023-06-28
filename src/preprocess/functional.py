@@ -21,7 +21,9 @@ def open_json(path: Union[Path, str]) -> Iterable:
 
 
 @typechecker
-def save_json(data: List[Dict[str, Any]], path: Union[Path, str], overwrite: bool = True) -> None:
+def save_json(
+    data: List[Dict[str, Any]], path: Union[Path, str], overwrite: bool = True
+) -> None:
     if os.path.exists(path) and not overwrite:
         raise ValueError
     with open(path, "w") as f:

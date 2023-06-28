@@ -25,5 +25,6 @@ def main(
     print("Predicting face points by dlib...")
     predict_points(paths["test"], predictor_path, verbose)
 
+
 if __name__ == "__main__":
     fire.Fire(main)
