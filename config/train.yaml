@@ -1,4 +1,4 @@
-batch_size: 256
+batch_size: 128
 num_workers: 12
 max_epochs: 200
 lr: 0.001
@@ -9,8 +9,8 @@ devices: [0]
 accumulate_grad_batches: 1
 
 num_classes: 136
-height: 256
-width: 256
+height: 224
+width: 224
 crop_height: 224
 crop_width: 224
 normalize_keypoints: true
@@ -24,11 +24,11 @@ defaults:
   - model: default
   - datamodule: default
   - optim: adamw
-  - criterion: mse
+  - criterion: mae
   - lr_scheduler: plateau
   - callbacks: default
   - metrics: default
   - paths: default
   - logger: tensorboard
-  - augmentations: default
+  - augmentations: medium
   - trainer: default

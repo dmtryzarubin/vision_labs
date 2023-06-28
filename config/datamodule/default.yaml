@@ -1,5 +1,5 @@
 _target_: src.data.FaceDataModule
-data_folder: /data/datasets/ssd/xray_flg/landmarks_task
+data_folder: landmarks_task
 datadir_key: path
 img_key: img_path
 pts_key: pts
