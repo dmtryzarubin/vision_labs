@@ -7,6 +7,7 @@ KEYSTOKEEP: list = [
 
 dlib_nmse: str = "dlib_nmse"
 model_nmse: str = "model_nmse"
+model_pts: str = "model_pts"
 model_label: str = "model"
 dlib_label: str = "dlib"
 join_on: list = ["dataset", "split", "fname"]
