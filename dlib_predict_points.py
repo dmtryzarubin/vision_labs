@@ -17,6 +17,14 @@ from src.preprocess.functional import open_json, save_json
 def _predict_points(
     data: List[Dict[str, Any]], predictor: DlibPointsDetector, verbose: bool = True
 ) -> List[Dict[str, Any]]:
+    """
+    Predicts points for each sample in data and calculates nmse for each sample
+
+    :param data: List of samples dicts
+    :param predictor: DlibPointsDetector
+    :param verbose: Boolean flag for printing progress bar, defaults to True
+    :return: List with dict of predictions
+    """
     pbar = tqdm(data, disable=not verbose)
     predictions = [{}] * len(data)
     for i, sample in enumerate(pbar):
@@ -48,6 +56,13 @@ def _predict_points(
 def predict_points(
     dataset_path: str, predictor_path: str = config.PREDICTOR_PATH, verbose: bool = True
 ) -> None:
+    """
+    Makes dlib prediction for all samples in dataset split
+
+    :param dataset_path: Path to dataset split obtained by create_annotation.py script
+    :param predictor_path: Path to dlib `.dat` file with shape predictor, defaults to config.PREDICTOR_PATH
+    :param verbose: Bollean flag for printing progress bar, defaults to True
+    """
     data = open_json(dataset_path)
     predictor = DlibPointsDetector(predictor_path)
     predictions = _predict_points(data, predictor, verbose)
