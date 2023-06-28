@@ -1,5 +1,5 @@
 _target_: timm.create_model
-model_name: mobilenetv3_small_050
+model_name: efficientnet_b0
 pretrained: true
 in_chans: 3
 num_classes: ${num_classes}
