@@ -1,0 +1,7 @@
+_target_: timm.create_model
+model_name: vit_tiny_patch16_224
+pretrained: true
+in_chans: 3
+num_classes: ${num_classes}
+img_size: ${img_size}
+drop_rate: 0.3

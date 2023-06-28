@@ -1,0 +1,17 @@
+_target_: src.data.FaceDataModule
+data_folder: /data/datasets/ssd/xray_flg/landmarks_task
+datadir_key: path
+img_key: img_path
+pts_key: pts
+box_key: dlib_face_box
+transforms: ${augmentations}
+batch_size: ${batch_size}
+num_workers: ${num_workers}
+normalize_keypoints: ${normalize_keypoints}
+input_key: image
+target_key: keypoints
+additional_keys:
+  - dataset
+  - split
+  - fname
+  - dlib_face_detected
